@@ -389,7 +389,8 @@ def process_vid(
     visibility_filter: VisibilityFilter,
 ):
   """Processes multiple chunks of a single video."""
-  sequence_path = os.path.join(input_adt_path, seq_name)
+  mod_seq_name = [x for x in os.listdir(input_adt_path) if seq_name in x][0]
+  sequence_path = os.path.join(input_adt_path, mod_seq_name)
   adt_processor = ADTVideoProcessor(sequence_path)
 
   for chunk_idx in tqdm.tqdm(chunks):
